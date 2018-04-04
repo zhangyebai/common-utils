@@ -19,6 +19,7 @@
 *.rar
 
 # output directories
+.idea/
 .gradle/
 build/
 out/
