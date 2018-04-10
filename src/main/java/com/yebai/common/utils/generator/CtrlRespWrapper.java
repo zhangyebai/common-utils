@@ -4,6 +4,11 @@ package com.yebai.common.utils.generator;
 import com.yebai.common.utils.bean.RespEntry;
 import com.yebai.common.utils.config.Config;
 
+/****************************************************
+ * @author Zhang Yebai
+ * @description 
+ * @date 2018/4/4 17:06  
+ ****************************************************/
 public class CtrlRespWrapper {
 	
 	private CtrlRespWrapper(){

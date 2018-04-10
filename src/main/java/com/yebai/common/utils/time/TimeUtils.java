@@ -2,6 +2,7 @@ package com.yebai.common.utils.time;
 
 import com.yebai.common.utils.config.Config;
 import org.apache.commons.lang3.StringUtils;
+import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -172,28 +173,70 @@ public class TimeUtils {
 		return ChronoUnit.MONTHS.between(begin, null == end ? LocalDate.now() : end);
 	}
 	
+	/****************************************************
+	 * @author Zhang Yebai
+	 * @description 从字符串中解析LocalDateTime, 默认使用<code>Config.Time.DATE_TIME_FORMAT_PATTERN</code>格式解析
+	 * @note null
+	 * @date 2018/4/8 16:32
+	 * @return LocalDateTime
+	 ****************************************************/
 	public static LocalDateTime parseDateTime(String dateTime){
 		return TimeUtils.parseDateTime(dateTime, null);
 	}
 	
+	/****************************************************
+	 * @author Zhang Yebai
+	 * @description 从字符串中解析LocalDateTime, 如果pattern为null或者blank则默认使用<code>Config.Time.DATE_TIME_FORMAT_PATTERN</code>格式解析
+	 * @note null
+	 * @date 2018/4/8 16:34
+	 * @return LocalDateTime
+	 ****************************************************/
 	public static LocalDateTime parseDateTime(String dateTime, String pattern){
 		checkArgument(StringUtils.isNotBlank(dateTime));
 		return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(null == pattern ? Config.Time.DATE_TIME_FORMAT_PATTERN : pattern));
 	}
 	
+	/****************************************************
+	 * @author Zhang Yebai
+	 * @description 从字符串中解析LocalDate, 默认使用 <code>Config.Time.DATE_FORMAT_PATTERN</code>格式解析
+	 * @note null
+	 * @date 2018/4/8 16:32
+	 * @return LocalDate
+	 ****************************************************/
 	public static LocalDate parseDate(String date){
 		return TimeUtils.parseDate(date, null);
 	}
 	
+	/****************************************************
+	 * @author Zhang Yebai
+	 * @description 从字符串中解析LocalDate, 如果pattern为null或者blank则默认使用 <code>Config.Time.DATE_FORMAT_PATTERN</code>格式解析
+	 * @note null
+	 * @date 2018/4/8 16:35
+	 * @return LocalDate
+	 ****************************************************/
 	public static LocalDate parseDate(String date, String pattern){
 		checkArgument(StringUtils.isNotBlank(date));
-		return LocalDate.parse(date, DateTimeFormatter.ofPattern(null == pattern ? Config.Time.DATE_TIME_FORMAT_PATTERN : pattern));
+		return LocalDate.parse(date, DateTimeFormatter.ofPattern(null == pattern ? Config.Time.DATE_FORMAT_PATTERN : pattern));
 	}
 	
+	/****************************************************
+	 * @author Zhang Yebai
+	 * @description 从字符串中解析LocalTime默认使用 <code>Config.Time.TIME_FORMAT_PATTERN</code>格式解析
+	 * @note null
+	 * @date 2018/4/8 16:36
+	 * @return LocalTime
+	 ****************************************************/
 	public static LocalTime parseTime(String time){
 		return TimeUtils.parseTime(time, null);
 	}
 	
+	/****************************************************
+	 * @author Zhang Yebai
+	 * @description 从字符串中解析LocalTime,如果pattern为null or blank 则默认使用 <code>Config.Time.TIME_FORMAT_PATTERN</code>格式解析
+	 * @note null
+	 * @date 2018/4/8 16:36
+	 * @return LocalTime
+	 ****************************************************/
 	public static LocalTime parseTime(String time, String pattern){
 		checkArgument(StringUtils.isNotBlank(time));
 		return LocalTime.parse(time, DateTimeFormatter.ofPattern(null == pattern ? Config.Time.TIME_FORMAT_PATTERN : pattern));
