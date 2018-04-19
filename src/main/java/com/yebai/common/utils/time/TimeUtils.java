@@ -22,6 +22,38 @@ import static com.google.common.base.Preconditions.checkArgument;
  ****************************************************/
 public class TimeUtils {
 	private TimeUtils(){}
+
+	public static LocalDateTime tidy(LocalDateTime dateTime, int hours){
+		if(null == dateTime){
+			dateTime = LocalDateTime.now();
+		}
+
+		LocalDateTime tidyTemp = dateTime.plusHours(-hours);
+		LocalDateTime tidyDateTime = LocalDateTime.of(tidyTemp.toLocalDate(),
+				LocalTime.of(tidyTemp.getHour(), 0, 0));
+		return tidyDateTime;
+	}
+
+	public static String tidy(LocalDateTime dateTime, String pattern, int hours){
+		if(null == pattern || StringUtils.isBlank(pattern.trim())){
+			pattern = Config.Time.DATE_TIME_FORMAT_PATTERN;
+		}
+		return TimeUtils.tidy(dateTime, hours).format(DateTimeFormatter.ofPattern(pattern));
+	}
+
+	public static String tidyNow(int hours){
+		return TimeUtils.tidy(null, null, hours);
+	}
+
+	public static String now(String pattern){
+		return LocalDateTime
+				.now()
+				.format(DateTimeFormatter.ofPattern(null == pattern ? Config.Time.DATE_TIME_FORMAT_PATTERN : pattern));
+	}
+
+	public static String now(){
+		return TimeUtils.now(null);
+	}
 	
 	/****************************************************
 	 * @author Zhang Yebai
