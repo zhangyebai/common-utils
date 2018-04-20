@@ -23,36 +23,97 @@ import static com.google.common.base.Preconditions.checkArgument;
 public class TimeUtils {
 	private TimeUtils(){}
 
-	public static LocalDateTime tidy(LocalDateTime dateTime, int hours){
+	/****************************************************
+	 * @author Zhang Yebai
+	 * @description 获取dateTime的整点时间, example : 2018-03-04 12:32:05 -> 2018-03-04 12:00:00
+	 * 				pattern : 取整后的输出格式, 可以为null
+	 * 				hours, 以dateTime为base向前取时间, example: hours = 2, 则2018-03-04 12:32:05 -> 2018-03-04 10:00:00
+	 * @note null
+	 * @date 2018/4/20 14:17
+	 * @return 以字符串形式返回
+	 ****************************************************/
+	public static String tidy(LocalDateTime dateTime, String pattern, int hours){
 		if(null == dateTime){
 			dateTime = LocalDateTime.now();
 		}
 
-		LocalDateTime tidyTemp = dateTime.plusHours(-hours);
-		LocalDateTime tidyDateTime = LocalDateTime.of(tidyTemp.toLocalDate(),
-				LocalTime.of(tidyTemp.getHour(), 0, 0));
-		return tidyDateTime;
-	}
-
-	public static String tidy(LocalDateTime dateTime, String pattern, int hours){
 		if(null == pattern || StringUtils.isBlank(pattern.trim())){
 			pattern = Config.Time.DATE_TIME_FORMAT_PATTERN;
 		}
-		return TimeUtils.tidy(dateTime, hours).format(DateTimeFormatter.ofPattern(pattern));
+		LocalDateTime tidyTemp = dateTime.plusHours(-hours);
+		LocalDateTime tidyDateTime = LocalDateTime.of(tidyTemp.toLocalDate(),
+				LocalTime.of(tidyTemp.getHour(), 0, 0));
+		return tidyDateTime.format(DateTimeFormatter.ofPattern(pattern));
 	}
 
+	/****************************************************
+	 * @author Zhang Yebai
+	 * @description 详见<code>tidy(LocalDateTime dateTime, String pattern, int hours)</code>
+	 * @note 以LocalDateTime.now为基准, 以pattern为格式, 取整点时间
+	 * @date 2018/4/20 14:17
+	 * @return 以字符串形式返回
+	 ****************************************************/
+	public static String tidyNow(String pattern, int hours){
+		return TimeUtils.tidy(null, pattern, hours);
+	}
+
+	/****************************************************
+	 * @author Zhang Yebai
+	 * @description 详见<code>tidy(LocalDateTime dateTime, String pattern, int hours)</code>
+	 * @note 以LocalDateTime.now为基准, 以默认pattern为格式, 取整点时间
+	 * @date 2018/4/20 14:17
+	 * @return 以字符串形式返回
+	 ****************************************************/
 	public static String tidyNow(int hours){
 		return TimeUtils.tidy(null, null, hours);
 	}
 
-	public static String now(String pattern){
-		return LocalDateTime
-				.now()
-				.format(DateTimeFormatter.ofPattern(null == pattern ? Config.Time.DATE_TIME_FORMAT_PATTERN : pattern));
+	/****************************************************
+	 * @author Zhang Yebai
+	 * @description 获取时间的String格式, 使用默认的pattern
+	 * @note
+	 * @date 2018/4/20 14:17
+	 * @return 以字符串形式返回
+	 ****************************************************/
+	public static String time(LocalDateTime dateTime){
+		return TimeUtils.time(dateTime, null);
 	}
 
+	/****************************************************
+	 * @author Zhang Yebai
+	 * @description 获取时间的String格式, 使用pattern
+	 * @note
+	 * @date 2018/4/20 14:17
+	 * @return 以字符串形式返回
+	 ****************************************************/
+	public static String time(LocalDateTime dateTime, String pattern){
+		return dateTime.format(DateTimeFormatter.ofPattern(null == pattern ? Config.Time.DATE_TIME_FORMAT_PATTERN : pattern));
+	}
+
+	/****************************************************
+	 * @author Zhang Yebai
+	 * @description 获取当前时间的String格式, 使用pattern
+	 * @note
+	 * @date 2018/4/20 14:17
+	 * @return 以字符串形式返回
+	 ****************************************************/
+	public static String now(String pattern){
+		return TimeUtils.time(LocalDateTime.now(), pattern);
+		/**return LocalDateTime
+		 .now()
+		 .format(DateTimeFormatter.ofPattern(null == pattern ? Config.Time.DATE_TIME_FORMAT_PATTERN : pattern));*/
+	}
+
+
+	/****************************************************
+	 * @author Zhang Yebai
+	 * @description 获取当前时间的String格式, 使用默认的pattern
+	 * @note
+	 * @date 2018/4/20 14:17
+	 * @return 以字符串形式返回
+	 ****************************************************/
 	public static String now(){
-		return TimeUtils.now(null);
+		return TimeUtils.time(LocalDateTime.now());
 	}
 	
 	/****************************************************
