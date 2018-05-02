@@ -2,7 +2,6 @@ package com.yebai.common.utils.time;
 
 import com.yebai.common.utils.config.Config;
 import org.apache.commons.lang3.StringUtils;
-//import org.jetbrains.annotations.NotNull;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -54,7 +53,7 @@ public class TimeUtils {
 	 * @return 以字符串形式返回
 	 ****************************************************/
 	public static String tidyNow(String pattern, int hours){
-		return TimeUtils.tidy(null, pattern, hours);
+		return tidy(null, pattern, hours);
 	}
 
 	/****************************************************
@@ -65,7 +64,7 @@ public class TimeUtils {
 	 * @return 以字符串形式返回
 	 ****************************************************/
 	public static String tidyNow(int hours){
-		return TimeUtils.tidy(null, null, hours);
+		return tidy(null, null, hours);
 	}
 
 	/****************************************************
@@ -76,7 +75,7 @@ public class TimeUtils {
 	 * @return 以字符串形式返回
 	 ****************************************************/
 	public static String time(LocalDateTime dateTime){
-		return TimeUtils.time(dateTime, null);
+		return time(dateTime, null);
 	}
 
 	/****************************************************
@@ -98,7 +97,7 @@ public class TimeUtils {
 	 * @return 以字符串形式返回
 	 ****************************************************/
 	public static String now(String pattern){
-		return TimeUtils.time(LocalDateTime.now(), pattern);
+		return time(LocalDateTime.now(), pattern);
 		/**return LocalDateTime
 		 .now()
 		 .format(DateTimeFormatter.ofPattern(null == pattern ? Config.Time.DATE_TIME_FORMAT_PATTERN : pattern));*/
@@ -113,7 +112,7 @@ public class TimeUtils {
 	 * @return 以字符串形式返回
 	 ****************************************************/
 	public static String now(){
-		return TimeUtils.time(LocalDateTime.now());
+		return time(LocalDateTime.now());
 	}
 	
 	/****************************************************
@@ -131,7 +130,7 @@ public class TimeUtils {
 	
 	
 	public static List<String> listLatestDateAsString(int size){
-		return TimeUtils.listLatestDateAsString(size, null);
+		return listLatestDateAsString(size, null);
 	}
 	
 	/****************************************************
@@ -170,7 +169,7 @@ public class TimeUtils {
 	 * @return   以给定日期格式返回，如果不指定日期格式则按照默认日期格式返回
 	 ****************************************************/
 	public static String beginDateTimeOfDay(LocalDate date, String dateTimePattern){
-		return TimeUtils.beginDateTimeOfDay(date)
+		return beginDateTimeOfDay(date)
 				.format(DateTimeFormatter.ofPattern(null == dateTimePattern ? Config.Time.DATE_TIME_FORMAT_PATTERN : dateTimePattern));
 	}
 	
@@ -194,13 +193,13 @@ public class TimeUtils {
 	 * @return
 	 ****************************************************/
 	public static String endDateTimeOfDay(LocalDate date, String dateTimePattern){
-		return TimeUtils.endDateTimeOfDay(date)
+		return endDateTimeOfDay(date)
 				.format(DateTimeFormatter.ofPattern(null == dateTimePattern ? Config.Time.DATE_TIME_FORMAT_PATTERN : dateTimePattern));
 	}
 	
 	
 	public static long goneMinutes(LocalDateTime begin){
-		return TimeUtils.goneMinutes(begin, null);
+		return goneMinutes(begin, null);
 	}
 	
 	/****************************************************
@@ -217,7 +216,7 @@ public class TimeUtils {
 	
 	
 	public static long goneHours(LocalDateTime begin){
-		return TimeUtils.goneHours(begin, null);
+		return goneHours(begin, null);
 	}
 	
 	/****************************************************
@@ -235,7 +234,7 @@ public class TimeUtils {
 	
 	
 	public static long goneDays(LocalDate begin){
-		return TimeUtils.goneDays(begin, null);
+		return goneDays(begin, null);
 	}
 	
 	/****************************************************
@@ -251,7 +250,7 @@ public class TimeUtils {
 	}
 	
 	public static long goneMonths(LocalDate begin){
-		return TimeUtils.goneMonths(begin, null);
+		return goneMonths(begin, null);
 	}
 	
 	/****************************************************
@@ -265,7 +264,14 @@ public class TimeUtils {
 		checkArgument(null != begin);
 		return ChronoUnit.MONTHS.between(begin, null == end ? LocalDate.now() : end);
 	}
-	
+
+	public static long goneSeconds(LocalDateTime start){
+		return goneSeconds(start, null);
+	}
+
+	public static long goneSeconds(LocalDateTime start, LocalDateTime end){
+		return ChronoUnit.SECONDS.between(start, null == end ? LocalDateTime.now() : end);
+	}
 	/****************************************************
 	 * @author Zhang Yebai
 	 * @description 从字符串中解析LocalDateTime, 默认使用<code>Config.Time.DATE_TIME_FORMAT_PATTERN</code>格式解析
@@ -274,7 +280,7 @@ public class TimeUtils {
 	 * @return LocalDateTime
 	 ****************************************************/
 	public static LocalDateTime parseDateTime(String dateTime){
-		return TimeUtils.parseDateTime(dateTime, null);
+		return parseDateTime(dateTime, null);
 	}
 	
 	/****************************************************
@@ -297,7 +303,7 @@ public class TimeUtils {
 	 * @return LocalDate
 	 ****************************************************/
 	public static LocalDate parseDate(String date){
-		return TimeUtils.parseDate(date, null);
+		return parseDate(date, null);
 	}
 	
 	/****************************************************
@@ -320,7 +326,7 @@ public class TimeUtils {
 	 * @return LocalTime
 	 ****************************************************/
 	public static LocalTime parseTime(String time){
-		return TimeUtils.parseTime(time, null);
+		return parseTime(time, null);
 	}
 	
 	/****************************************************
