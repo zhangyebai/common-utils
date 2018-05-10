@@ -19,7 +19,7 @@ import java.util.stream.IntStream;
  * 			  以此类推date和time
  *
  * 			  所有api本着简洁、短小、DRY、不混淆、在工程中高效易用为原则。
- * 			  以C++的视角来看待常用的库api编写,极力避免不必要的对象生成
+ * 			  以C++的视角来看待常用的库api编写,极力避免不必要的对象生成以及调用栈展开
  * @attention JDK8 or later is required.
  * @author Zhang Yebai
  * @date 2018/4/4 16:11
@@ -208,16 +208,16 @@ public class TimeUtil {
 	 * @return LocalDateTime
 	 * @author Zhang Yebai
 	 ****************************************************/
-	public static LocalDateTime beginDate(LocalDate date){
+	public static LocalDateTime begin(LocalDate date){
 		return LocalDateTime.of(null == date ? LocalDate.now() : date, LocalTime.MIN);
 	}
 
 	public static String beginDateString(){
-		return beginDateString(null);
+		return beginString(null);
 	}
 
-	public static String beginDateString(LocalDate date){
-		return beginDateString(date, null);
+	public static String beginString(LocalDate date){
+		return beginString(date, null);
 	}
 
 	/****************************************************
@@ -227,12 +227,12 @@ public class TimeUtil {
 	 * @date 2018/4/3 12:03
 	 * @return   以给定日期格式返回，如果不指定日期格式则按照默认日期格式返回
 	 ****************************************************/
-	public static String beginDateString(LocalDate date, String pattern){
-		return beginDate(date).format(StringUtil.isBlank(pattern) ? Time.FORMATTER_DEFAULT : DateTimeFormatter.ofPattern(pattern));
+	public static String beginString(LocalDate date, String pattern){
+		return begin(date).format(StringUtil.isBlank(pattern) ? Time.FORMATTER_DEFAULT : DateTimeFormatter.ofPattern(pattern));
 	}
 
 
-	public static LocalDateTime endDate(){
+	public static LocalDateTime end(){
 		return LocalDateTime.of(LocalDate.now(), LocalTime.MIN);
 	}
 
@@ -243,7 +243,7 @@ public class TimeUtil {
 	 * @date 2018/4/3 12:52
 	 * @return
 	 ****************************************************/
-	public static LocalDateTime endDate(LocalDate date){
+	public static LocalDateTime end(LocalDate date){
 		return LocalDateTime.of(null == date ? LocalDate.now() : date, LocalTime.MAX);
 	}
 
@@ -252,7 +252,7 @@ public class TimeUtil {
 	}
 
 	public static String endDateString(LocalDate date){
-		return endDate(date).format(Time.FORMATTER_DEFAULT);
+		return end(date).format(Time.FORMATTER_DEFAULT);
 	}
 	/****************************************************
 	 * @author Zhang Yebai
@@ -261,8 +261,8 @@ public class TimeUtil {
 	 * @date 2018/4/3 12:52
 	 * @return
 	 ****************************************************/
-	public static String endDateString(LocalDate date, String pattern){
-		return endDate(date).format(StringUtil.isBlank(pattern) ? Time.FORMATTER_DEFAULT : DateTimeFormatter.ofPattern(pattern));
+	public static String endString(LocalDate date, String pattern){
+		return end(date).format(StringUtil.isBlank(pattern) ? Time.FORMATTER_DEFAULT : DateTimeFormatter.ofPattern(pattern));
 	}
 
 
