@@ -17,13 +17,7 @@ public class Config {
 		public static final String ERROR_MESSAGE = "error";
 	}
 	
-	public static final class Time{
-		private Time(){}
-		public static final String DATE_TIME_FORMAT_PATTERN = "yyyy-MM-dd HH:mm:ss";
-		public static final String DATE_FORMAT_PATTERN = "yyyy-MM-dd";
-		public static final String TIME_FORMAT_PATTERN = "HH:mm:ss";
-	}
-	
+
 	public static final class ExceptionMessage{
 		private ExceptionMessage(){}
 		

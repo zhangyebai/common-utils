@@ -4,13 +4,11 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 
-import static org.junit.Assert.*;
-
 public class TimeUtilsTest {
 	
 	@Test
 	public void listLatestDate() {
-		System.out.println(TimeUtils.listLatestDateAsString(20));
+		System.out.println(TimeUtil.listLatestDateAsString(20));
 	}
 	
 	@Test
@@ -39,8 +37,8 @@ public class TimeUtilsTest {
 	
 	@Test
 	public void goneMinutes() {
-		System.out.println(TimeUtils.goneMinutes(LocalDateTime.of(2018, 04, 04, 12, 00, 00)));
-		assert 256 == TimeUtils.goneMinutes(LocalDateTime.of(2018, 04, 04, 12, 00, 00));
+		System.out.println(TimeUtil.goneMinutes(LocalDateTime.of(2018, 04, 04, 12, 00, 00)));
+		assert 256 == TimeUtil.goneMinutes(LocalDateTime.of(2018, 04, 04, 12, 00, 00));
 	}
 	
 	@Test
