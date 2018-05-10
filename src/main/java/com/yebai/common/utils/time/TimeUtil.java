@@ -15,10 +15,12 @@ import static com.google.common.base.Preconditions.checkArgument;
 
 /****************************************************
  * @intent 常用的时间处理函数
- * @attention 包含date time两个字段的参数必然是local date time的完整字符串形式
+ * @note 包含date time两个字段的参数必然是local date time的完整字符串形式
  * 			  以此类推date和time
  *
- * 			  所有api本着简洁、短小、不混淆、在工程中高效易用为原则
+ * 			  所有api本着简洁、短小、DRY、不混淆、在工程中高效易用为原则。
+ * 			  以C++的视角来看待常用的库api编写,极力避免不必要的对象生成
+ * @attention JDK8 or later is required.
  * @author Zhang Yebai
  * @date 2018/4/4 16:11
  * @log modified at 2018-05-10 by Zhang Yebai
@@ -146,53 +148,78 @@ public class TimeUtil {
 		return now(null);
 	}
 
+	/* ********************************************Latest LocalDate API*************************************************** */
 
 	/****************************************************
+	 * @intent 获取包括今天在内的往前推算的 days - 1 天
+	 * @date 2018/4/20 14:17
+	 * @param days 往前推算的天数
+	 * @return LocalDateTime-now-String
 	 * @author Zhang Yebai
-	 * @description 获取包括今天在内的往前推算的 size - 1 天
-	 * @note null
-	 * @date 2018/4/3 11:17
-	 * @return 以日期形式返回
 	 ****************************************************/
-	public static List<LocalDate> listLatestDate(int size){
-		checkArgument(size > 0);
+	public static List<LocalDate> listLatestDate(int days){
+		if(days <= 0){
+			throw new IllegalArgumentException(
+					"only positive days is accepted in public static List<LocalDate> listLatestDate(int days)");
+		}
 		final LocalDate today = LocalDate.now();
-		return IntStream.range(0, size).mapToObj(index -> today.plusDays(index - size + 1)).collect(Collectors.toList());
+		return IntStream.range(0, days).mapToObj(index -> today.plusDays(index - days + 1)).collect(Collectors.toList());
 	}
 
-	/* ********************************************Time Format API*************************************************** */
-	public static List<String> listLatestDateAsString(int size){
-		return listLatestDateAsString(size, null);
-	}
-	
 	/****************************************************
+	 * @intent 获取包括今天在内的往前推算的 days - 1 天的LocalDateTime字符串形式
+	 * @date 2018/4/20 14:17
+	 * @param days 往前推算的天数
+	 * @param pattern LocalDateTime格式化形式,如果为null,则使用默认的DateTimeFormatter
+	 * @return LocalDateTime-now-String
 	 * @author Zhang Yebai
-	 * @description 获取包括今天在内的往前推算的 size - 1 天
-	 * @note null
-	 * @date 2018/4/3 12:48
-	 * @return 以给定正则表达式形式返回，如果正则为空，使用默认的日期格式
 	 ****************************************************/
-	public static List<String> listLatestDateAsString(int size, String datePattern){
-		checkArgument(size > 0);
+	public static List<String> listLatestDateString(int days, String pattern){
+		if(days <= 0){
+			throw new IllegalArgumentException(
+					"only positive days is accepted in public static List<String> listLatestDateAsString(int days, String pattern)");
+		}
 		final LocalDate today = LocalDate.now();
 		final DateTimeFormatter dateTimeFormatter =
-				DateTimeFormatter.ofPattern(null == datePattern ? TimeUtil.Time.DATE_FORMAT_PATTERN : datePattern);
-		return IntStream.range(0, size)
-				.mapToObj(index -> today.plusDays(index - size + 1).format(dateTimeFormatter))
+				null == pattern ? Time.FORMATTER_DEFAULT : DateTimeFormatter.ofPattern(pattern);
+		return IntStream.range(0, days)
+				.mapToObj(index -> today.plusDays(index - days + 1).format(dateTimeFormatter))
 				.collect(Collectors.toList());
 	}
-	
+
 	/****************************************************
+	 * @intent 获取包括今天在内的往前推算的 days - 1 天的LocalDateTime字符串形式,使用默认的DateTimeFormatter
+	 * @date 2018/4/20 14:17
+	 * @param days 往前推算的天数
+	 * @return LocalDateTime-now-String
 	 * @author Zhang Yebai
-	 * @description 获取指定的日期当天的开始时间，如果指定日期为空则表示今天的开始时间
-	 * @note null
-	 * @date 2018/4/3 12:49
-	 * @return	以日期-时间形式返回某天的开始时间
 	 ****************************************************/
-	public static LocalDateTime beginDateTimeOfDay(LocalDate date){
+	public static List<String> listLatestDateString(int days){
+		return listLatestDateString(days, null);
+	}
+
+
+
+	/* ******************************************Tidy LocalDateTime MIN & MAX API************************************************* */
+	/****************************************************
+	 * @intent 获取LocalDate当天的开始时间
+	 * @date 2018/4/20 14:17
+	 * @param date 日期
+	 * @return LocalDateTime
+	 * @author Zhang Yebai
+	 ****************************************************/
+	public static LocalDateTime beginDate(LocalDate date){
 		return LocalDateTime.of(null == date ? LocalDate.now() : date, LocalTime.MIN);
 	}
-	
+
+	public static String beginDateString(){
+		return beginDateString(null);
+	}
+
+	public static String beginDateString(LocalDate date){
+		return beginDateString(date, null);
+	}
+
 	/****************************************************
 	 * @author Zhang Yebai
 	 * @description 获取指定的日期当天的开始时间，如果指定日期为空则表示今天的开始时间
@@ -200,11 +227,15 @@ public class TimeUtil {
 	 * @date 2018/4/3 12:03
 	 * @return   以给定日期格式返回，如果不指定日期格式则按照默认日期格式返回
 	 ****************************************************/
-	public static String beginDateTimeOfDay(LocalDate date, String dateTimePattern){
-		return beginDateTimeOfDay(date)
-				.format(DateTimeFormatter.ofPattern(null == dateTimePattern ? TimeUtil.Time.DATE_TIME_PATTERN_DEFAULT : dateTimePattern));
+	public static String beginDateString(LocalDate date, String pattern){
+		return beginDate(date).format(StringUtils.isBlank(pattern) ? Time.FORMATTER_DEFAULT : DateTimeFormatter.ofPattern(pattern));
 	}
-	
+
+
+	public static LocalDateTime endDate(){
+		return LocalDateTime.of(LocalDate.now(), LocalTime.MIN);
+	}
+
 	/****************************************************
 	 * @author Zhang Yebai
 	 * @description @see <code>beginDateTimeOfDay</code>
@@ -212,11 +243,17 @@ public class TimeUtil {
 	 * @date 2018/4/3 12:52
 	 * @return
 	 ****************************************************/
-	public static LocalDateTime endDateTimeOfDay(LocalDate date){
+	public static LocalDateTime endDate(LocalDate date){
 		return LocalDateTime.of(null == date ? LocalDate.now() : date, LocalTime.MAX);
 	}
-	
-	
+
+	public static String endString(){
+		return endDateString(null);
+	}
+
+	public static String endDateString(LocalDate date){
+		return endDate(date).format(Time.FORMATTER_DEFAULT);
+	}
 	/****************************************************
 	 * @author Zhang Yebai
 	 * @description @see beginDateTimeOfDay
@@ -224,11 +261,12 @@ public class TimeUtil {
 	 * @date 2018/4/3 12:52
 	 * @return
 	 ****************************************************/
-	public static String endDateTimeOfDay(LocalDate date, String dateTimePattern){
-		return endDateTimeOfDay(date)
-				.format(DateTimeFormatter.ofPattern(null == dateTimePattern ? TimeUtil.Time.DATE_TIME_PATTERN_DEFAULT : dateTimePattern));
+	public static String endDateString(LocalDate date, String pattern){
+		return endDate(date).format(StringUtils.isBlank(pattern) ? Time.FORMATTER_DEFAULT : DateTimeFormatter.ofPattern(pattern));
 	}
-	
+
+
+	/* ***************************Gone Years Months Days Hours Minutes Seconds API*************************** */
 	
 	public static long goneMinutes(LocalDateTime begin){
 		return goneMinutes(begin, null);

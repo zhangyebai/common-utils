@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="GROUP_BY_SEVERITY" value="true" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="9dc31d41-874c-47bc-9109-241b349e1de3" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yebai/common/utils/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yebai/common/utils/config/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/yebai/common/utils/time/TimeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yebai/common/utils/time/TimeUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/yebai/common/utils/time/TimeUtilsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/yebai/common/utils/time/TimeUtilsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/yebai/common/utils/time/TimeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/yebai/common/utils/time/TimeUtil.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -28,8 +29,8 @@
       <file leaf-file-name="TimeUtil.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/yebai/common/utils/time/TimeUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="162" column="120" selection-start-line="162" selection-start-column="120" selection-end-line="162" selection-end-column="120" />
+            <state relative-caret-position="2593">
+              <caret line="210" column="41" selection-start-line="210" selection-start-column="41" selection-end-line="210" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1622#1623#0" expanded="true" />
@@ -42,6 +43,18 @@
                 <element signature="e#5579#5580#0" expanded="true" />
                 <element signature="e#3922#3923#0" expanded="true" />
                 <element signature="e#3961#3962#0" expanded="true" />
+                <element signature="e#4513#4514#0" expanded="true" />
+                <element signature="e#4561#4562#0" expanded="true" />
+                <element signature="e#8600#8601#0" expanded="true" />
+                <element signature="e#8612#8613#0" expanded="true" />
+                <element signature="e#8803#8804#0" expanded="true" />
+                <element signature="e#8815#8816#0" expanded="true" />
+                <element signature="e#9223#9224#0" expanded="true" />
+                <element signature="e#9285#9286#0" expanded="true" />
+                <element signature="e#9613#9614#0" expanded="true" />
+                <element signature="e#9667#9668#0" expanded="true" />
+                <element signature="e#9612#9613#0" expanded="true" />
+                <element signature="e#9667#9668#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -488,6 +501,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/yebai/common/utils/string/StringUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yebai/common/utils/config/Config.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yebai/common/utils/time/TimeUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/yebai/common/utils/bean/Test.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/yebai/common/utils/time/TimeUtil.java" />
       </list>
     </option>
@@ -552,7 +566,7 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="utils" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="bean" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="common-utils" type="b2602c69:ProjectViewProjectNode" />
@@ -605,7 +619,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TimeUtilsTest.goneMinutes">
+  <component name="RunManager">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
     </configuration>
@@ -763,7 +777,7 @@
       <workItem from="1524129178606" duration="3617000" />
       <workItem from="1524452044229" duration="677000" />
       <workItem from="1525240736818" duration="2255000" />
-      <workItem from="1525936246787" duration="4734000" />
+      <workItem from="1525936246787" duration="7451000" />
     </task>
     <servers />
   </component>
@@ -788,7 +802,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24520000" />
+    <option name="totallyTimeSpent" value="27237000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="23" width="1563" height="855" extended-state="6" />
@@ -796,13 +810,14 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3296875" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3286908" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.33704737" />
       <window_info id="Capture Tool" order="2" />
@@ -820,7 +835,6 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.3360324" />
-      <window_info anchor="bottom" id="Messages" order="7" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -849,6 +863,18 @@
             <element signature="e#5579#5580#0" expanded="true" />
             <element signature="e#3922#3923#0" expanded="true" />
             <element signature="e#3961#3962#0" expanded="true" />
+            <element signature="e#4513#4514#0" expanded="true" />
+            <element signature="e#4561#4562#0" expanded="true" />
+            <element signature="e#8600#8601#0" expanded="true" />
+            <element signature="e#8612#8613#0" expanded="true" />
+            <element signature="e#8803#8804#0" expanded="true" />
+            <element signature="e#8815#8816#0" expanded="true" />
+            <element signature="e#9223#9224#0" expanded="true" />
+            <element signature="e#9285#9286#0" expanded="true" />
+            <element signature="e#9613#9614#0" expanded="true" />
+            <element signature="e#9667#9668#0" expanded="true" />
+            <element signature="e#9612#9613#0" expanded="true" />
+            <element signature="e#9667#9668#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -901,6 +927,18 @@
             <element signature="e#5579#5580#0" expanded="true" />
             <element signature="e#3922#3923#0" expanded="true" />
             <element signature="e#3961#3962#0" expanded="true" />
+            <element signature="e#4513#4514#0" expanded="true" />
+            <element signature="e#4561#4562#0" expanded="true" />
+            <element signature="e#8600#8601#0" expanded="true" />
+            <element signature="e#8612#8613#0" expanded="true" />
+            <element signature="e#8803#8804#0" expanded="true" />
+            <element signature="e#8815#8816#0" expanded="true" />
+            <element signature="e#9223#9224#0" expanded="true" />
+            <element signature="e#9285#9286#0" expanded="true" />
+            <element signature="e#9613#9614#0" expanded="true" />
+            <element signature="e#9667#9668#0" expanded="true" />
+            <element signature="e#9612#9613#0" expanded="true" />
+            <element signature="e#9667#9668#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -953,6 +991,18 @@
             <element signature="e#5579#5580#0" expanded="true" />
             <element signature="e#3922#3923#0" expanded="true" />
             <element signature="e#3961#3962#0" expanded="true" />
+            <element signature="e#4513#4514#0" expanded="true" />
+            <element signature="e#4561#4562#0" expanded="true" />
+            <element signature="e#8600#8601#0" expanded="true" />
+            <element signature="e#8612#8613#0" expanded="true" />
+            <element signature="e#8803#8804#0" expanded="true" />
+            <element signature="e#8815#8816#0" expanded="true" />
+            <element signature="e#9223#9224#0" expanded="true" />
+            <element signature="e#9285#9286#0" expanded="true" />
+            <element signature="e#9613#9614#0" expanded="true" />
+            <element signature="e#9667#9668#0" expanded="true" />
+            <element signature="e#9612#9613#0" expanded="true" />
+            <element signature="e#9667#9668#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1005,6 +1055,18 @@
             <element signature="e#5579#5580#0" expanded="true" />
             <element signature="e#3922#3923#0" expanded="true" />
             <element signature="e#3961#3962#0" expanded="true" />
+            <element signature="e#4513#4514#0" expanded="true" />
+            <element signature="e#4561#4562#0" expanded="true" />
+            <element signature="e#8600#8601#0" expanded="true" />
+            <element signature="e#8612#8613#0" expanded="true" />
+            <element signature="e#8803#8804#0" expanded="true" />
+            <element signature="e#8815#8816#0" expanded="true" />
+            <element signature="e#9223#9224#0" expanded="true" />
+            <element signature="e#9285#9286#0" expanded="true" />
+            <element signature="e#9613#9614#0" expanded="true" />
+            <element signature="e#9667#9668#0" expanded="true" />
+            <element signature="e#9612#9613#0" expanded="true" />
+            <element signature="e#9667#9668#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1276,10 +1338,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/yebai/common/utils/bean/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <folding>
+            <element signature="e#134#135#0" expanded="true" />
+            <element signature="e#163#164#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_162/src.zip!/java/time/format/DateTimeFormatter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="534" column="36" selection-start-line="534" selection-start-column="36" selection-end-line="534" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_162/src.zip!/java/time/LocalDateTime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="143" column="38" selection-start-line="143" selection-start-column="38" selection-end-line="143" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yebai/common/utils/time/TimeUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="162" column="120" selection-start-line="162" selection-start-column="120" selection-end-line="162" selection-end-column="120" />
+        <state relative-caret-position="2593">
+          <caret line="210" column="41" selection-start-line="210" selection-start-column="41" selection-end-line="210" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1622#1623#0" expanded="true" />
@@ -1292,6 +1379,18 @@
             <element signature="e#5579#5580#0" expanded="true" />
             <element signature="e#3922#3923#0" expanded="true" />
             <element signature="e#3961#3962#0" expanded="true" />
+            <element signature="e#4513#4514#0" expanded="true" />
+            <element signature="e#4561#4562#0" expanded="true" />
+            <element signature="e#8600#8601#0" expanded="true" />
+            <element signature="e#8612#8613#0" expanded="true" />
+            <element signature="e#8803#8804#0" expanded="true" />
+            <element signature="e#8815#8816#0" expanded="true" />
+            <element signature="e#9223#9224#0" expanded="true" />
+            <element signature="e#9285#9286#0" expanded="true" />
+            <element signature="e#9613#9614#0" expanded="true" />
+            <element signature="e#9667#9668#0" expanded="true" />
+            <element signature="e#9612#9613#0" expanded="true" />
+            <element signature="e#9667#9668#0" expanded="true" />
           </folding>
         </state>
       </provider>
