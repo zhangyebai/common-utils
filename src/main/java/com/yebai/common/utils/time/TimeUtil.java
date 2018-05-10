@@ -362,7 +362,7 @@ public class TimeUtil {
 	 ****************************************************/
 	public static LocalDateTime parseDateTime(String dateTime, String pattern){
 		checkArgument(StringUtils.isNotBlank(dateTime));
-		return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(null == pattern ? TimeUtil.Time.DATE_TIME_PATTERN_DEFAULT : pattern));
+		return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(null == pattern ? Time.DATE_TIME_PATTERN_DEFAULT : pattern));
 	}
 	
 	/****************************************************
@@ -385,7 +385,7 @@ public class TimeUtil {
 	 ****************************************************/
 	public static LocalDate parseDate(String date, String pattern){
 		checkArgument(StringUtils.isNotBlank(date));
-		return LocalDate.parse(date, DateTimeFormatter.ofPattern(null == pattern ? TimeUtil.Time.DATE_FORMAT_PATTERN : pattern));
+		return LocalDate.parse(date, DateTimeFormatter.ofPattern(null == pattern ? Time.DATE_FORMAT_PATTERN : pattern));
 	}
 	
 	/****************************************************
@@ -408,6 +408,6 @@ public class TimeUtil {
 	 ****************************************************/
 	public static LocalTime parseTime(String time, String pattern){
 		checkArgument(StringUtils.isNotBlank(time));
-		return LocalTime.parse(time, DateTimeFormatter.ofPattern(null == pattern ? TimeUtil.Time.TIME_FORMAT_PATTERN : pattern));
+		return LocalTime.parse(time, DateTimeFormatter.ofPattern(null == pattern ? Time.TIME_FORMAT_PATTERN : pattern));
 	}
 }
