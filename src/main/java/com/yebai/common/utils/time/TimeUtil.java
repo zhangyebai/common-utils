@@ -1,6 +1,7 @@
 package com.yebai.common.utils.time;
 
-import org.apache.commons.lang3.StringUtils;
+
+import com.yebai.common.utils.string.StringUtil;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -11,7 +12,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static com.google.common.base.Preconditions.checkArgument;
 
 /****************************************************
  * @intent 常用的时间处理函数
@@ -76,7 +76,7 @@ public class TimeUtil {
 	 ****************************************************/
 	public static String tidyString(LocalDateTime dateTime, String pattern, int hours){
 		return tidy(dateTime, hours)
-				.format(StringUtils.isBlank(pattern) ? Time.FORMATTER_DEFAULT : DateTimeFormatter.ofPattern(pattern));
+				.format(StringUtil.isBlank(pattern) ? Time.FORMATTER_DEFAULT : DateTimeFormatter.ofPattern(pattern));
 
 	}
 
@@ -124,7 +124,7 @@ public class TimeUtil {
 	 * @author Zhang Yebai
 	 ****************************************************/
 	public static String time(LocalDateTime dateTime, String pattern){
-		return dateTime.format(StringUtils.isBlank(pattern) ? Time.FORMATTER_DEFAULT : DateTimeFormatter.ofPattern(pattern));
+		return dateTime.format(StringUtil.isBlank(pattern) ? Time.FORMATTER_DEFAULT : DateTimeFormatter.ofPattern(pattern));
 	}
 
 	/****************************************************
@@ -228,7 +228,7 @@ public class TimeUtil {
 	 * @return   以给定日期格式返回，如果不指定日期格式则按照默认日期格式返回
 	 ****************************************************/
 	public static String beginDateString(LocalDate date, String pattern){
-		return beginDate(date).format(StringUtils.isBlank(pattern) ? Time.FORMATTER_DEFAULT : DateTimeFormatter.ofPattern(pattern));
+		return beginDate(date).format(StringUtil.isBlank(pattern) ? Time.FORMATTER_DEFAULT : DateTimeFormatter.ofPattern(pattern));
 	}
 
 
@@ -262,7 +262,7 @@ public class TimeUtil {
 	 * @return
 	 ****************************************************/
 	public static String endDateString(LocalDate date, String pattern){
-		return endDate(date).format(StringUtils.isBlank(pattern) ? Time.FORMATTER_DEFAULT : DateTimeFormatter.ofPattern(pattern));
+		return endDate(date).format(StringUtil.isBlank(pattern) ? Time.FORMATTER_DEFAULT : DateTimeFormatter.ofPattern(pattern));
 	}
 
 
@@ -280,7 +280,9 @@ public class TimeUtil {
 	 * @return
 	 ****************************************************/
 	public static long goneMinutes(LocalDateTime begin, LocalDateTime end){
-		checkArgument(null != begin);
+		if(null == begin){
+			throw new IllegalArgumentException("LocalDateTime begin is null.");
+		}
 		return ChronoUnit.MINUTES.between(begin, null == end ? LocalDateTime.now() : end);
 	}
 	
@@ -297,7 +299,9 @@ public class TimeUtil {
 	 * @return
 	 ****************************************************/
 	public static long goneHours(LocalDateTime begin, LocalDateTime end){
-		checkArgument(null != begin);
+		if(null == begin){
+			throw new IllegalArgumentException("LocalDateTime begin is null.");
+		}
 		return ChronoUnit.HOURS.between(begin, null == end ? LocalDateTime.now() : end);
 	}
 	
@@ -315,7 +319,9 @@ public class TimeUtil {
 	 * @return
 	 ****************************************************/
 	public static long goneDays(LocalDate begin, LocalDate end){
-		checkArgument( null != begin);
+		if(null == begin){
+			throw new IllegalArgumentException("LocalDateTime begin is null.");
+		}
 		return ChronoUnit.DAYS.between(begin, null == end ? LocalDate.now() : end);
 	}
 	
@@ -331,7 +337,9 @@ public class TimeUtil {
 	 * @return
 	 ****************************************************/
 	public static long goneMonths(LocalDate begin, LocalDate end){
-		checkArgument(null != begin);
+		if(null == begin){
+			throw new IllegalArgumentException("LocalDateTime begin is null.");
+		}
 		return ChronoUnit.MONTHS.between(begin, null == end ? LocalDate.now() : end);
 	}
 
@@ -361,7 +369,9 @@ public class TimeUtil {
 	 * @return LocalDateTime
 	 ****************************************************/
 	public static LocalDateTime parseDateTime(String dateTime, String pattern){
-		checkArgument(StringUtils.isNotBlank(dateTime));
+		if(StringUtil.isBlank(dateTime)){
+			throw new IllegalArgumentException("date time is blank, can handle this string.");
+		}
 		return LocalDateTime.parse(dateTime, DateTimeFormatter.ofPattern(null == pattern ? Time.DATE_TIME_PATTERN_DEFAULT : pattern));
 	}
 	
@@ -384,7 +394,9 @@ public class TimeUtil {
 	 * @return LocalDate
 	 ****************************************************/
 	public static LocalDate parseDate(String date, String pattern){
-		checkArgument(StringUtils.isNotBlank(date));
+		if(StringUtil.isBlank(date)){
+			throw new IllegalArgumentException("date time is blank, can handle this string.");
+		}
 		return LocalDate.parse(date, DateTimeFormatter.ofPattern(null == pattern ? Time.DATE_FORMAT_PATTERN : pattern));
 	}
 	
@@ -407,7 +419,9 @@ public class TimeUtil {
 	 * @return LocalTime
 	 ****************************************************/
 	public static LocalTime parseTime(String time, String pattern){
-		checkArgument(StringUtils.isNotBlank(time));
+		if(StringUtil.isBlank(time)){
+			throw new IllegalArgumentException("date time is blank, can handle this string.");
+		}
 		return LocalTime.parse(time, DateTimeFormatter.ofPattern(null == pattern ? Time.TIME_FORMAT_PATTERN : pattern));
 	}
 }

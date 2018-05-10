@@ -6,8 +6,8 @@ import java.util.List;
 
 /// import static com.google.common.base.Preconditions.checkArgument;
 
-public class StringUtils {
-    private StringUtils(){}
+public class StringUtil {
+    private StringUtil(){}
 
     public String suffix(String src, String regx){
         if(null == src || org.apache.commons.lang3.StringUtils.isBlank(src.trim())){
@@ -30,5 +30,22 @@ public class StringUtils {
         }
         List<String> prefixList = Lists.newArrayList(src.split(regx));
         return prefixList.get(0);
+    }
+
+    public static boolean isBlank(final CharSequence cs) {
+        int strLen;
+        if (cs == null || (strLen = cs.length()) == 0) {
+            return true;
+        }
+        for (int i = 0; i < strLen; i++) {
+            if (!Character.isWhitespace(cs.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean isNotBlank(final CharSequence cs){
+        return !isBlank(cs);
     }
 }
