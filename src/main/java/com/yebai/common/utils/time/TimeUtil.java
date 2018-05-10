@@ -19,7 +19,7 @@ import java.util.stream.IntStream;
  * 			  以此类推date和time
  *
  * 			  所有api本着简洁、短小、DRY、不混淆、在工程中高效易用为原则。
- * 			  以C++的视角来看待常用的库api编写,极力避免不必要的对象生成以及调用栈展开
+ * 			  以C++的视角来看待常用的库api编写,极力避免不必要的对象生成以及调用栈展开.
  * @attention JDK8 or later is required.
  * @author Zhang Yebai
  * @date 2018/4/4 16:11
