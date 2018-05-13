@@ -10,7 +10,7 @@ public class StringUtil {
     private StringUtil(){}
 
     public String suffix(String src, String regx){
-        if(null == src || org.apache.commons.lang3.StringUtils.isBlank(src.trim())){
+        if(null == src || isBlank(src.trim())){
             return src;
         }
         if(null == regx){
@@ -22,7 +22,7 @@ public class StringUtil {
     }
 
     public String prefix(String src, String regx){
-        if(null == src || org.apache.commons.lang3.StringUtils.isBlank(src.trim())){
+        if(null == src || isBlank(src.trim())){
             return src;
         }
         if(null == regx){
