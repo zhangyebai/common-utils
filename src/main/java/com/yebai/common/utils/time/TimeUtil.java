@@ -397,7 +397,7 @@ public class TimeUtil {
 		if(StringUtil.isBlank(date)){
 			throw new IllegalArgumentException("date time is blank, can handle this string.");
 		}
-		return LocalDate.parse(date, DateTimeFormatter.ofPattern(null == pattern ? Time.DATE_FORMAT_PATTERN : pattern));
+		return LocalDate.parse(date, null == pattern ? Time.FORMATTER_DEFAULT : DateTimeFormatter.ofPattern(pattern));
 	}
 	
 	/****************************************************
@@ -422,6 +422,6 @@ public class TimeUtil {
 		if(StringUtil.isBlank(time)){
 			throw new IllegalArgumentException("date time is blank, can handle this string.");
 		}
-		return LocalTime.parse(time, DateTimeFormatter.ofPattern(null == pattern ? Time.TIME_FORMAT_PATTERN : pattern));
+		return LocalTime.parse(time, null == pattern ? Time.FORMATTER_DEFAULT : DateTimeFormatter.ofPattern(pattern));
 	}
 }
