@@ -352,7 +352,7 @@ public class TimeUtil {
 	}
 	/****************************************************
 	 * @author Zhang Yebai
-	 * @description 从字符串中解析LocalDateTime, 默认使用<code>Config.Time.DATE_TIME_PATTERN_DEFAULT</code>格式解析
+	 * @description 从字符串中解析LocalDateTime, 默认使用<code>Property.Time.DATE_TIME_PATTERN_DEFAULT</code>格式解析
 	 * @note null
 	 * @date 2018/4/8 16:32
 	 * @return LocalDateTime
@@ -363,7 +363,7 @@ public class TimeUtil {
 	
 	/****************************************************
 	 * @author Zhang Yebai
-	 * @description 从字符串中解析LocalDateTime, 如果pattern为null或者blank则默认使用<code>Config.Time.DATE_TIME_PATTERN_DEFAULT</code>格式解析
+	 * @description 从字符串中解析LocalDateTime, 如果pattern为null或者blank则默认使用<code>Property.Time.DATE_TIME_PATTERN_DEFAULT</code>格式解析
 	 * @note null
 	 * @date 2018/4/8 16:34
 	 * @return LocalDateTime
@@ -377,7 +377,7 @@ public class TimeUtil {
 	
 	/****************************************************
 	 * @author Zhang Yebai
-	 * @description 从字符串中解析LocalDate, 默认使用 <code>Config.Time.DATE_FORMAT_PATTERN</code>格式解析
+	 * @description 从字符串中解析LocalDate, 默认使用 <code>Property.Time.DATE_FORMAT_PATTERN</code>格式解析
 	 * @note null
 	 * @date 2018/4/8 16:32
 	 * @return LocalDate
@@ -388,7 +388,7 @@ public class TimeUtil {
 	
 	/****************************************************
 	 * @author Zhang Yebai
-	 * @description 从字符串中解析LocalDate, 如果pattern为null或者blank则默认使用 <code>Config.Time.DATE_FORMAT_PATTERN</code>格式解析
+	 * @description 从字符串中解析LocalDate, 如果pattern为null或者blank则默认使用 <code>Property.Time.DATE_FORMAT_PATTERN</code>格式解析
 	 * @note null
 	 * @date 2018/4/8 16:35
 	 * @return LocalDate
@@ -402,7 +402,7 @@ public class TimeUtil {
 	
 	/****************************************************
 	 * @author Zhang Yebai
-	 * @description 从字符串中解析LocalTime默认使用 <code>Config.Time.TIME_FORMAT_PATTERN</code>格式解析
+	 * @description 从字符串中解析LocalTime默认使用 <code>Property.Time.TIME_FORMAT_PATTERN</code>格式解析
 	 * @note null
 	 * @date 2018/4/8 16:36
 	 * @return LocalTime
@@ -413,7 +413,7 @@ public class TimeUtil {
 	
 	/****************************************************
 	 * @author Zhang Yebai
-	 * @description 从字符串中解析LocalTime,如果pattern为null or blank 则默认使用 <code>Config.Time.TIME_FORMAT_PATTERN</code>格式解析
+	 * @description 从字符串中解析LocalTime,如果pattern为null or blank 则默认使用 <code>Property.Time.TIME_FORMAT_PATTERN</code>格式解析
 	 * @note null
 	 * @date 2018/4/8 16:36
 	 * @return LocalTime

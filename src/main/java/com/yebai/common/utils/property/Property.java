@@ -1,17 +1,17 @@
-package com.yebai.common.utils.config;
+package com.yebai.common.utils.property;
 
 /****************************************************
  * @author Zhang Yebai
  * @description 
  * @date 2018/4/4 16:11
  ****************************************************/
-public class Config {
-	private Config(){}
+public class Property {
+	private Property(){}
 	
 	public static final class Resp{
 		private Resp(){}
-		public static final Integer SUCCESS_CODE = 200;
-		public static final Integer ERROR_CODE = 500;
+		public static final int SUCCESS_CODE = 200;
+		public static final int ERROR_CODE = 500;
 	
 		public static final String SUCCESS_MESSAGE = "success";
 		public static final String ERROR_MESSAGE = "error";

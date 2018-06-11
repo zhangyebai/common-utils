@@ -9,25 +9,25 @@ package com.yebai.common.utils.bean;
 
 public class RespEntry<T> {
 	
-	private Integer code;
+	private int code;
 	
 	private String message;
-	
+
 	private T data;
 	
 	public RespEntry(){}
 	
-	public RespEntry(Integer code, String message, T data){
+	public RespEntry(int code, String message, T data){
 		this.code = code;
 		this.message = message;
 		this.data = data;
 	}
 	
-	public Integer getCode() {
+	public int getCode() {
 		return code;
 	}
 	
-	public RespEntry setCode(Integer code) {
+	public RespEntry setCode(int code) {
 		this.code = code;
 		return this;
 	}
@@ -49,4 +49,5 @@ public class RespEntry<T> {
 		this.data = data;
 		return this;
 	}
+
 }
