@@ -50,4 +50,12 @@ public class RespEntry<T> {
 		return this;
 	}
 
+	@Override
+	public String toString() {
+		return "RespEntry{" +
+				"code=" + code +
+				", message='" + message + '\'' +
+				", data=" + data +
+				'}';
+	}
 }

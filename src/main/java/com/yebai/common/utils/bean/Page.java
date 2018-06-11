@@ -65,4 +65,14 @@ public class Page<T> {
 		this.total = total;
 		return this;
 	}
+
+	@Override
+	public String toString() {
+		return "Page{" +
+				"page=" + page +
+				", size=" + size +
+				", pages=" + pages +
+				", total=" + total +
+				'}';
+	}
 }

@@ -44,4 +44,14 @@ public class PageRespEntry<T> {
 		this.data = data;
 		return this;
 	}
+
+	@Override
+	public String toString() {
+		return "PageRespEntry{" +
+				"code=" + code +
+				", message='" + message + '\'' +
+				", page=" + page +
+				", data=" + data +
+				'}';
+	}
 }
