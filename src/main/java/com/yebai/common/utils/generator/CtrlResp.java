@@ -10,7 +10,8 @@ import java.util.List;
 
 /****************************************************
  * @author Zhang Yebai
- * @description 
+ * @description ok err相关的接口是不带分页的
+ * 				okay error相关的接口是带分页属性的
  * @date 2018/4/4 17:06  
  ****************************************************/
 public class CtrlResp {
