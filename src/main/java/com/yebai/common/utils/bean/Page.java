@@ -16,11 +16,13 @@ public class Page<T> {
 	}
 
 	public Page(List<T> data){
-		PageInfo<T> info = new PageInfo<T>(data);
-		this.page = info.getPageNum();
-		this.size = info.getPageSize();
-		this.pages = info.getPages();
-		this.total = info.getTotal();
+		if(null != data) {
+			PageInfo<T> info = new PageInfo<T>(data);
+			this.page = info.getPageNum();
+			this.size = info.getPageSize();
+			this.pages = info.getPages();
+			this.total = info.getTotal();
+		}
 	}
 
 	public Page(int page, int size, int pages, long total){
