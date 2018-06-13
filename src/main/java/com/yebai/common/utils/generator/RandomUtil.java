@@ -26,8 +26,20 @@ public class RandomUtil {
 		return new Random(System.nanoTime()).nextInt(range + 1);
 	}
 
-	public static double randomDouble(int high, int low, int base){
+	public static double randomDoubleBackup(int high, int low, int base){
 		return new BigDecimal(randomInt(high - base) + base + new Random(System.nanoTime()).nextDouble())
-				.setScale(low, BigDecimal.ROUND_HALF_UP).doubleValue();
+				.setScale(low, BigDecimal.ROUND_HALF_UP)
+				.doubleValue();
+	}
+
+	/**
+	 * 关注一下上下两个方法的实现效率
+	 * 上: 两次seed获取, 两次random运算 一次强制类型转换
+	 * 下: 一次double乘法运算 一次seed获取 一次强制类型转换
+	 * */
+	public static double randomDouble(int high, int low, int base){
+		return new BigDecimal(new Random(System.nanoTime()).nextDouble() * (high - base) + base)
+				.setScale(low, BigDecimal.ROUND_HALF_UP)
+				.doubleValue();
 	}
 }
