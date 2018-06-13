@@ -1,5 +1,6 @@
 package com.yebai.common.utils.generator;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Random;
 import java.util.stream.IntStream;
@@ -23,5 +24,10 @@ public class RandomUtil {
 
 	public static int randomInt(int range){
 		return new Random(System.nanoTime()).nextInt(range + 1);
+	}
+
+	public static double randomDouble(int high, int low, int base){
+		return new BigDecimal(randomInt(high - base) + base + new Random(System.nanoTime()).nextDouble())
+				.setScale(low, BigDecimal.ROUND_HALF_UP).doubleValue();
 	}
 }

@@ -1,5 +1,6 @@
 package com.yebai.common.utils.generator;
 
+import com.yebai.common.utils.anno.RandomDouble;
 import com.yebai.common.utils.anno.RandomInt;
 import com.yebai.common.utils.anno.RandomString;
 
@@ -21,6 +22,9 @@ public class ClassUtil {
 				} else if (field.isAnnotationPresent(RandomInt.class)) {
 					RandomInt randomInt = field.getDeclaredAnnotation(RandomInt.class);
 					field.set(t, RandomUtil.randomInt(randomInt.range()));
+				}else if(field.isAnnotationPresent(RandomDouble.class)){
+					RandomDouble randomDouble = field.getDeclaredAnnotation(RandomDouble.class);
+					field.set(t, RandomUtil.randomDouble(randomDouble.high(), randomDouble.low(), randomDouble.base()));
 				}
 			}
 			return t;
