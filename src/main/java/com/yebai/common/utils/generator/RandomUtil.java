@@ -26,6 +26,7 @@ public class RandomUtil {
 		return new Random(System.nanoTime()).nextInt(range + 1);
 	}
 
+	@SuppressWarnings(value = "unused")
 	public static double randomDoubleBackup(int high, int low, int base){
 		return new BigDecimal(randomInt(high - base) + base + new Random(System.nanoTime()).nextDouble())
 				.setScale(low, BigDecimal.ROUND_HALF_UP)

@@ -5,7 +5,7 @@ import com.yebai.common.utils.anno.RandomInt;
 import com.yebai.common.utils.anno.RandomString;
 
 public class Girl {
-	@RandomString(length = 3)
+	@RandomString(length = 4)
 	private String name;
 
 	@RandomInt(range = 100)
