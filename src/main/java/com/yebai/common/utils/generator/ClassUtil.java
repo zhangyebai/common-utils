@@ -2,6 +2,7 @@ package com.yebai.common.utils.generator;
 
 import com.yebai.common.utils.anno.RandomDouble;
 import com.yebai.common.utils.anno.RandomInt;
+import com.yebai.common.utils.anno.RandomList;
 import com.yebai.common.utils.anno.RandomString;
 
 import java.lang.reflect.Field;
@@ -25,6 +26,9 @@ public class ClassUtil {
 				}else if(field.isAnnotationPresent(RandomDouble.class)){
 					RandomDouble randomDouble = field.getDeclaredAnnotation(RandomDouble.class);
 					field.set(t, RandomUtil.randomDouble(randomDouble.high(), randomDouble.low(), randomDouble.base()));
+				}else if(field.isAnnotationPresent(RandomList.class)){
+					RandomList randomList = field.getDeclaredAnnotation(RandomList.class);
+					field.set(t, AutoInjectionUtil.listInjection(randomList.target(), randomList.length()));
 				}
 			}
 			return t;
